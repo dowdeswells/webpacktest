@@ -10,8 +10,8 @@ angular.module(MODULE_NAME, [ngRouteModuleName])
     });
   }])
 
-  .controller('View1Ctrl', [function () {
-
+  .controller('View1Ctrl', ['$scope', function ($scope) {
+      $scope.message = 'Controller fffff View 1';
   }]);
 
 export default MODULE_NAME;

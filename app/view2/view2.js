@@ -11,7 +11,7 @@ mod
   .controller('View2Ctrl', ['$scope', 'versionModule', View2CtrlFn]);
 
 function View2CtrlFn($scope, versionModule) {
-  $scope.hello = 'Controller has initialised';
+  $scope.hello = 'Controller  initialised';
 }
 
 
