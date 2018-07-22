@@ -23,13 +23,18 @@ var app = angular.module(APP_NAME, [
       templateUrl: 'app/view2/view2.html',
       resolve: {
         versionModule: ['$q', '$timeout', '$ocLazyLoad', loadExtraStuff],
-        angularModule: ['lazyLoadService', function (lazyLoadService) {
-          var importView2Fn = function () { return import(/* webpackChunkName: "../dist/view2" */ './view2/view2'); }
-          lazyLoadService
-            .loadModule(importView2Fn)
-            .then(function (mod) {
-              console.log('Module Loaded', mod);
-            });
+        angularModule: ['lazyLoadService', '$q', '$timeout', function (lazyLoadService, $q, $timeout) {
+          var def = $q.defer();
+          $timeout(function () {
+            var importView2Fn = function () { return import(/* webpackChunkName: "../dist/view2" */ './view2/view2'); }
+            lazyLoadService
+              .loadModule(importView2Fn)
+              .then(function (mod) {
+                console.log('Module Loaded', mod);
+                def.resolve(mod);
+              });
+          }, 10000);
+          return def.promise;
         }]
       }
     })
@@ -38,11 +43,13 @@ var app = angular.module(APP_NAME, [
 
   function loadExtraStuff($q, $timeout, $ocLazyLoad) {
     var def = $q.defer();
-    var promise = loadScript($q, $ocLazyLoad);
-    promise
-      .then(function (result) {
-        def.resolve(result);
-      });
+    $timeout(function () {
+      var promise = loadScript($q, $ocLazyLoad);
+      promise
+        .then(function (result) {
+          def.resolve(result);
+        });
+    }, 3000);
     return def.promise;
   }
 
