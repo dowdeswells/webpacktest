@@ -6,7 +6,7 @@ const MODULE_NAME = 'flappy.module';
 var mod = angular.module(MODULE_NAME, []);
 
 mod.component('flappy', {
-  templateUrl: 'components/flappy/flappy.template.html',
+  templateUrl: 'app/components/flappy/flappy.template.html',
   controller: flappyCtrl,
   controllerAs: 'vm',
   bindings: {

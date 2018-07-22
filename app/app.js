@@ -20,7 +20,7 @@ var app = angular.module(APP_NAME, [
   $routeProvider
     .when('/view2', {
       controller: 'View2Ctrl',
-      templateUrl: 'view2/view2.html',
+      templateUrl: 'app/view2/view2.html',
       resolve: {
         versionModule: ['$q', '$timeout', '$ocLazyLoad', loadExtraStuff],
         angularModule: ['lazyLoadService', function (lazyLoadService) {

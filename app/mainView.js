@@ -1,6 +1,6 @@
 
 var componentDef = {
-    templateUrl: 'mainView.template.html',
+    templateUrl: 'app/mainView.template.html',
     controller: controllerFn,
     controllerAs: 'vm'
 };

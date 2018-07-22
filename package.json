@@ -16,13 +16,15 @@
     "karma-junit-reporter": "^0.4.1",
     "protractor": "^4.0.9",
     "webpack": "^4.16.0",
-    "webpack-cli": "^3.0.8"
+    "webpack-cli": "^3.0.8",
+    "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
     "build": "webpack",
     "update-deps": "npm update",
-    "prestart": "webpack",
-    "start": "http-server -a localhost -p 8000 -c-1",
+    "prestart-http": "webpack",
+    "start-http": "http-server -a localhost -p 8000 -c-1",
+    "start-dev": "webpack-dev-server --open",
     "pretest": "npm install",
     "test": "karma start karma.conf.js",
     "test-single-run": "karma start karma.conf.js --single-run",
